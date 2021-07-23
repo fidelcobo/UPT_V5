@@ -1,0 +1,11 @@
+<RCC>
+  <qresource>
+    <file>actis.png</file>
+    <file>Folder.png</file>
+    <file>Alien.png</file>
+    <file>didata.png</file>
+    <file>Apply.png</file>
+    <file>NTT.png</file>
+    <file>capture.png</file>
+  </qresource>
+</RCC>
