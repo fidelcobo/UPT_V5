@@ -42,6 +42,10 @@ class NotFound(QtWidgets.QDialog, Ui_not_found):  # Usada para presentar la pant
 
 
 class CsvConsolidated(QtWidgets.QDialog, Ui_consulta_csv):
+    """
+    Clase que presenta la pantalla donde se pregunta al usuario si desea consolidar el fichero csv
+    o bien quiere que se presente cada línea del Excel de oferta original
+    """
 
     def __init__(self):
         super(self.__class__, self).__init__()
