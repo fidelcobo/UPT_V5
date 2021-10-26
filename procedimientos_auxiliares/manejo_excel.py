@@ -9,7 +9,7 @@ from typing import List
 from aux_class import FullElementosOferta
 
 
-def pass_to_excel(datos_clases: List[FullElementosOferta], moneda:str, instance):  # V4. Nuevo método compactado
+def pass_to_excel(datos_clases: List[FullElementosOferta], moneda: str, instance):  # V4. Nuevo método compactado
 
     """
     Este procedimiento recibe los datos de la oferta como lista de elementos FullElementosOferta y compone un libro
@@ -77,15 +77,18 @@ def pass_to_excel(datos_clases: List[FullElementosOferta], moneda:str, instance)
                 hoja['O' + fila] = wpl
                 hoja['O' + fila_sig] = wpl
                 try:
-                    unit_price = float(articulo.total_sell_price) # / int(articulo.qty)
+                    unit_price = float(articulo.total_sell_price) / int(
+                        articulo.qty)  # Recuperamos el cálculo inicial v5.0.0.a
                 except ValueError:
                     instance.signals.error_fichero.emit('Fichero no procesable\n Los datos finales de coste'
                                                         ' y PVP no están definidos')
                     return None, False
 
-                unit_cost = float(articulo.total_cost) # / int(articulo.qty)
-                unit_cost_back = float(articulo.cost_backout) # / int(articulo.qty)
-                unit_sell_back = float(articulo.venta_backout) # / int(articulo.qty)
+                unit_cost = float(articulo.total_cost) / int(articulo.qty)  # Recuperamos el cálculo inicial v5.0.0.a
+                unit_cost_back = float(
+                    articulo.cost_backout)  # /int(articulo.qty) # Recuperamos el cálculo inicial v5.0.0.a
+                unit_sell_back = float(articulo.venta_backout)
+
                 hoja['P' + fila_sig] = locale.format_string('%.2f', unit_sell_back)
                 hoja['P' + fila] = locale.format_string('%.2f', unit_price)
                 hoja['Q' + fila] = locale.format_string('%.2f', unit_cost)
@@ -93,7 +96,8 @@ def pass_to_excel(datos_clases: List[FullElementosOferta], moneda:str, instance)
                 try:
                     fecha_init = '{}/{}/{}'.format(articulo.init_date.day, articulo.init_date.month,
                                                    articulo.init_date.year)
-                    fecha_init_limpia = '{}{}{}'.format(str(articulo.init_date.year), str(articulo.init_date.month).zfill(2),
+                    fecha_init_limpia = '{}{}{}'.format(str(articulo.init_date.year),
+                                                        str(articulo.init_date.month).zfill(2),
                                                         str(articulo.init_date.day).zfill(2))
                 except AttributeError:
                     instance.signals.error_fichero.emit('Fichero no procesable\n La fecha de inicio'
@@ -132,7 +136,6 @@ def pass_to_excel(datos_clases: List[FullElementosOferta], moneda:str, instance)
 
 
 def csv_from_excel(entrada, salida, instance):
-
     """
     Esta rutina convierte un libro Excel de oferta en .csv cargable por Direct
     :param entrada: Fichero Excel de entrada

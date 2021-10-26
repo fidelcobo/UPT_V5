@@ -25,8 +25,11 @@ def consolidar_datos(datos: List[FullElementosOferta]):
                 item_consolidado.qty += item.qty
                 no_serie = str(item.serial_no)
                 item_consolidado.serial_no = item_consolidado.serial_no + (', ' + no_serie)
-                encontrado = True
-                break
+                item_consolidado.total_sell_price += item.total_sell_price
+                item_consolidado.total_cost += item.total_cost
+
+            encontrado = True
+            break
 
         if not encontrado:  # Si no está, lo añadimos
             item.serial_no = str(item.serial_no)  # Convertir en str por si es todo cifras

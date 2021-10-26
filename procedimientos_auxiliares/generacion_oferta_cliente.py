@@ -21,7 +21,8 @@ def generar_oferta_cliente(datos_clases: List[FullElementosOferta], datos_genera
     lista_articulos_oferta = []
 
     for element in datos_clases:
-        pvp_total = element.qty * element.total_sell_price
+        # pvp_total = element.qty * element.total_sell_price
+        pvp_total = element.total_sell_price
         item = ElementosOferta(element.in_csv, element.manufacturer, element.code, element.qty, element.init_date,
                                element.end_date, element.uptime, pvp_total)
         lista_articulos_oferta.append(item)
