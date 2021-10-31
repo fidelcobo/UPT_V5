@@ -20,16 +20,16 @@ def consolidar_datos(datos: List[FullElementosOferta]):
         encontrado = False  # Parámetro auxiliar
         for item_consolidado in lista_consolidada:  # Comprobamos si la entrada ya estaba en lista_consolidada
             if ((item.manufacturer == item_consolidado.manufacturer) and (item.code == item_consolidado.code) and
-                    (item.init_date == item_consolidado.init_date) and (item.end_date == item_consolidado.end_date) and
-                    (item.uptime == item_consolidado.uptime)):
+               (item.init_date == item_consolidado.init_date) and (item.end_date == item_consolidado.end_date) and
+               (item.uptime == item_consolidado.uptime)):
                 item_consolidado.qty += item.qty
                 no_serie = str(item.serial_no)
                 item_consolidado.serial_no = item_consolidado.serial_no + (', ' + no_serie)
                 item_consolidado.total_sell_price += item.total_sell_price
                 item_consolidado.total_cost += item.total_cost
 
-            encontrado = True
-            break
+                encontrado = True
+                break
 
         if not encontrado:  # Si no está, lo añadimos
             item.serial_no = str(item.serial_no)  # Convertir en str por si es todo cifras
