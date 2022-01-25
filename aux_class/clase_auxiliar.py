@@ -61,4 +61,10 @@ class FullElementosOferta(ElementosOferta):
         self.serial_no = serial_no
         self.currency = currency
 
-
+    def igual_a(self, otro_elemento):
+        if ((self.manufacturer == otro_elemento.manufacturer) and (self.code == otro_elemento.code) and
+                (self.init_date == otro_elemento.init_date) and (self.end_date == otro_elemento.end_date) and
+                (self.uptime == otro_elemento.uptime)):
+            return True
+        else:
+            return False
