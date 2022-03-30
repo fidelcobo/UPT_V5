@@ -9,7 +9,9 @@ from typing import List
 from aux_class import FullElementosOferta
 
 
-def pass_to_excel(datos_clases: List[FullElementosOferta], moneda: str, instance):  # V4. Nuevo método compactado
+def pass_to_excel(datos_clases: List[FullElementosOferta],
+                  moneda: str,
+                  instance) -> openpyxl.Workbook:  # V4. Nuevo método compactado
 
     """
     Este procedimiento recibe los datos de la oferta como lista de elementos FullElementosOferta y compone un libro
@@ -124,7 +126,7 @@ def pass_to_excel(datos_clases: List[FullElementosOferta], moneda: str, instance
                 hoja['AF' + fila_sig] = articulo.tech
                 hoja['AG' + fila] = articulo.serial_no
                 hoja['AG' + fila_sig] = articulo.serial_no
-                hoja['AI' + fila] = 226  # Nuevo campo 24/5/2019
+                hoja['AI' + fila] = 201  # Nuevo campo 24/5/2019 . Pasado a 201 el 30/3/2022
 
                 curr_row += 2
                 num_fila += 3
@@ -135,7 +137,7 @@ def pass_to_excel(datos_clases: List[FullElementosOferta], moneda: str, instance
         return libro, True
 
 
-def csv_from_excel(entrada, salida, instance):
+def csv_from_excel(entrada: str, salida: str, instance):
     """
     Esta rutina convierte un libro Excel de oferta en .csv cargable por Direct
     :param entrada: Fichero Excel de entrada
