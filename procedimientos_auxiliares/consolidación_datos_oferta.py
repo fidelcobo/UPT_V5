@@ -3,7 +3,7 @@ from typing import List
 from aux_class import FullElementosOferta
 
 
-def consolidar_datos(datos: List[FullElementosOferta]):
+def consolidar_datos(datos: List[FullElementosOferta]) -> List[FullElementosOferta]:
     """
     Este procedimiento recibe una lista compuesta de las diversas entradas del fichero de oferta. Consolida los
     elementos repetidos, entregando así una lista consolidada de menor longitud
@@ -20,9 +20,9 @@ def consolidar_datos(datos: List[FullElementosOferta]):
         encontrado = False  # Parámetro auxiliar
         for item_consolidado in lista_consolidada:  # Comprobamos si la entrada ya estaba en lista_consolidada
             if item.igual_a(item_consolidado):
-            # if ((item.manufacturer == item_consolidado.manufacturer) and (item.code == item_consolidado.code) and
-            #    (item.init_date == item_consolidado.init_date) and (item.end_date == item_consolidado.end_date) and
-            #    (item.uptime == item_consolidado.uptime)):
+                # if ((item.manufacturer == item_consolidado.manufacturer) and (item.code == item_consolidado.code) and
+                #    (item.init_date == item_consolidado.init_date) and (item.end_date == item_consolidado.end_date) and
+                #    (item.uptime == item_consolidado.uptime)):
                 item_consolidado.qty += item.qty
                 no_serie = str(item.serial_no)
                 item_consolidado.serial_no = item_consolidado.serial_no + (', ' + no_serie)

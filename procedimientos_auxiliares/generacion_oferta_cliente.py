@@ -7,7 +7,9 @@ from os.path import dirname
 from datetime import datetime, timedelta
 
 
-def generar_oferta_cliente(datos_clases: List[FullElementosOferta], datos_generales, instance):
+def generar_oferta_cliente(datos_clases: List[FullElementosOferta],
+                           datos_generales: DatosGenerales,
+                           instance) -> openpyxl.Workbook:
     """
     Esta rutina nos genera un oferta Excel entregable al cliente. Para ello se parte de la listas de los
     de los ítems de la quote. Se consolidan aquellos artículos en los que se
