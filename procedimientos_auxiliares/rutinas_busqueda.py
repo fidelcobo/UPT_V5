@@ -1,9 +1,13 @@
+from typing import List, Set
+
 import requests
 
 from aux_class import Cisco_Articles
 
 
-def busca_codigos_cisco(code, sla, manufacturer) -> set:
+def busca_codigos_cisco(code: List,
+                        sla: List,
+                        manufacturer: List) -> Set[Cisco_Articles]:
     """
     Este procedimiento recibe tres listas sacadas directamente de la plantilla Excel: la de SKUs,
     la de SLAs correspondientes y la de fabricantes. Las filtra y entrega un set de combinaciones
